@@ -1,0 +1,13 @@
+# Build artifacts
+/target/
+Cargo.lock
+
+# Generated data files (too large for git)
+*.fst
+*.vocab.txt
+*.bin
+*.gz
+*.bz2
+
+# OS files
+.DS_Store

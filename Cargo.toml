@@ -1,0 +1,37 @@
+[package]
+name = "combined2fst"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "combined2fst"
+path = "src/main.rs"
+
+[[bin]]
+name = "fst"
+path = "src/fst.rs"
+
+[[bin]]
+name = "test_integrity"
+path = "src/test_integrity.rs"
+
+[[bin]]
+name = "build_vi_fst"
+path = "src/build_vi_fst.rs"
+
+[[bin]]
+name = "test_vi_fst"
+path = "src/test_vi_fst.rs"
+
+[[bin]]
+name = "build_bigram"
+path = "src/build_bigram.rs"
+
+[dependencies]
+anyhow = "1"
+flate2 = "1"
+fst = "0.4"
+memmap2 = "0.9"
+rand = "0.8"
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
