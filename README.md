@@ -64,3 +64,17 @@ Each FST entry stores a 64-bit value:
 ## License
 
 MIT
+
+## Benchmarks
+
+**Device:** MacBook Pro (M1 Pro)
+**Models:** Vietnamese (Phrase FST + Bigram + Trigram)
+
+| Metric | Result |
+| :--- | :--- |
+| **Model Load Time** | ~200ms |
+| **Average Latency** | ~554µs |
+| **Min Latency** | 500ns |
+| **Max Latency** | 5.44ms |
+
+*Note: Latency measures the time to lookup usage history, FST, and N-gram models for next-word prediction.*
