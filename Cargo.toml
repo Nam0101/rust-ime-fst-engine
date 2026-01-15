@@ -27,6 +27,10 @@ path = "src/test_vi_fst.rs"
 name = "build_bigram"
 path = "src/build_bigram.rs"
 
+[[bin]]
+name = "read_bigram"
+path = "src/read_bigram.rs"
+
 [dependencies]
 anyhow = "1"
 flate2 = "1"
