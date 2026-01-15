@@ -71,6 +71,10 @@ path = "src/suggest_hybrid.rs"
 name = "batch_test_trigram"
 path = "src/batch_test_trigram.rs"
 
+[[bin]]
+name = "test_user_history"
+path = "src/test_user_history.rs"
+
 [dependencies]
 anyhow = "1"
 flate2 = "1"
@@ -79,3 +83,4 @@ memmap2 = "0.9"
 rand = "0.8"
 serde = { version = "1", features = ["derive"] }
 serde_json = "1"
+unicode-normalization = "0.1.25"

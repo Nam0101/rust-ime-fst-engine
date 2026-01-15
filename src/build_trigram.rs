@@ -5,11 +5,9 @@
 //!
 //! Usage: cargo run --release --bin build_trigram -- <corpus.txt.gz> [--pairs K] [--top N]
 
-use anyhow::{Context, Result};
+use anyhow::Result;
 use combined2fst::build_canonical_map;
 use flate2::read::GzDecoder;
-use fst::Map;
-use memmap2::Mmap;
 use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader, BufWriter, Write};

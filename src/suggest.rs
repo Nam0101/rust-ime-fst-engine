@@ -3,9 +3,8 @@
 //! Usage: cargo run --release --bin suggest -- "i love"
 
 use anyhow::Result;
-use fst::Map;
+use combined2fst::build_canonical_map;
 use memmap2::Mmap;
-use std::collections::HashMap;
 use std::fs::File;
 use std::io::{BufRead, BufReader};
 
@@ -23,13 +22,7 @@ fn main() -> Result<()> {
     let vocab: Vec<String> = BufReader::new(File::open("en.vocab.txt")?)
         .lines()
         .collect::<std::io::Result<_>>()?;
-
-    // Build lowercase -> id map (simple version)
-    let mut word_to_id: HashMap<String, usize> = HashMap::new();
-    for (id, word) in vocab.iter().enumerate() {
-        let lower = word.to_lowercase();
-        word_to_id.entry(lower).or_insert(id);
-    }
+    let (_, canonical_map) = build_canonical_map("en.lex.fst", "en.vocab.txt")?;
 
     // Load bigram
     let bigram_file = File::open("en.bigram.bin")?;
@@ -54,15 +47,19 @@ fn main() -> Result<()> {
         return Ok(());
     }
 
-    let last_word = words.last().unwrap().to_lowercase();
+    let last_word = normalize_token(words.last().unwrap());
+    if last_word.is_empty() {
+        println!("Please enter a sentence prefix");
+        return Ok(());
+    }
 
     println!("Input: \"{}\"", sentence);
     println!("Last word: \"{}\"", last_word);
     println!();
 
     // Look up bigram suggestions
-    if let Some(&word_id) = word_to_id.get(&last_word) {
-        let idx_offset = header_size + word_id * 8;
+    if let Some(&word_id) = canonical_map.get(&last_word) {
+        let idx_offset = header_size + (word_id as usize) * 8;
         let offset = u32::from_le_bytes([
             bigram_data[idx_offset],
             bigram_data[idx_offset + 1],
@@ -122,4 +119,11 @@ fn main() -> Result<()> {
     }
 
     Ok(())
+}
+
+fn normalize_token(word: &str) -> String {
+    word.to_lowercase()
+        .chars()
+        .filter(|c| c.is_alphabetic() || *c == '\'')
+        .collect()
 }
