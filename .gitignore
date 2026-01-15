@@ -2,10 +2,6 @@
 /target/
 Cargo.lock
 
-# Generated data files (too large for git)
-*.fst
-*.vocab.txt
-*.bin
 *.gz
 *.bz2
 
@@ -14,3 +10,8 @@ Cargo.lock
 
 # OS files
 .DS_Store
+
+# Models
+*.bin
+*.fst
+*.vocab.txt

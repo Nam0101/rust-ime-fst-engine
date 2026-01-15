@@ -75,6 +75,10 @@ path = "src/batch_test_trigram.rs"
 name = "test_user_history"
 path = "src/test_user_history.rs"
 
+[[bin]]
+name = "benchmark_engine"
+path = "src/benchmark_engine.rs"
+
 [dependencies]
 anyhow = "1"
 flate2 = "1"
