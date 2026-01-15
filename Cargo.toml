@@ -31,6 +31,10 @@ path = "src/build_bigram.rs"
 name = "read_bigram"
 path = "src/read_bigram.rs"
 
+[[bin]]
+name = "build_bigram_stream"
+path = "src/build_bigram_stream.rs"
+
 [dependencies]
 anyhow = "1"
 flate2 = "1"
