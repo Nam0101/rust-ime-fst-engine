@@ -55,6 +55,22 @@ path = "src/suggest_vi.rs"
 name = "validate_vi_bigram"
 path = "src/validate_vi_bigram.rs"
 
+[[bin]]
+name = "build_vi_trigram"
+path = "src/build_vi_trigram.rs"
+
+[[bin]]
+name = "build_trigram"
+path = "src/build_trigram.rs"
+
+[[bin]]
+name = "suggest_hybrid"
+path = "src/suggest_hybrid.rs"
+
+[[bin]]
+name = "batch_test_trigram"
+path = "src/batch_test_trigram.rs"
+
 [dependencies]
 anyhow = "1"
 flate2 = "1"

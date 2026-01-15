@@ -9,5 +9,8 @@ Cargo.lock
 *.gz
 *.bz2
 
+# Test artifacts
+*.csv
+
 # OS files
 .DS_Store
