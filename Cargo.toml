@@ -43,6 +43,14 @@ path = "src/validate_bigram.rs"
 name = "suggest"
 path = "src/suggest.rs"
 
+[[bin]]
+name = "build_vi_bigram"
+path = "src/build_vi_bigram.rs"
+
+[[bin]]
+name = "suggest_vi"
+path = "src/suggest_vi.rs"
+
 [dependencies]
 anyhow = "1"
 flate2 = "1"
